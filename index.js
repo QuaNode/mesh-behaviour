@@ -2,10 +2,6 @@
 'use strict';
 
 var backend = require('beamjs').backend();
-var behaviour = backend.behaviour({
-
-    overwritePath: true
-});
 
 module.exports = function (options) {
 
@@ -17,7 +13,8 @@ module.exports = function (options) {
         nodes,
         version,
         path,
-        queue
+        queue,
+        relative
     } = options;
     if (!Array.isArray(nodes) || nodes.some(function (node) {
 
@@ -26,6 +23,11 @@ module.exports = function (options) {
 
         throw new Error('Invalid nodes');
     }
+    var behaviour = backend.behaviour({
+
+        overwritePath: !relative,
+        skipSameRoutes: true
+    });
     return behaviour({
 
         name: 'trigger',

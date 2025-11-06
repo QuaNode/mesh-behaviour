@@ -1,6 +1,6 @@
 {
   "name": "mesh-behaviour",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A behavior used with BeamJS framework to setup a network mesh of nodes.",
   "main": "index.js",
   "scripts": {
