@@ -1,0 +1,32 @@
+{
+  "name": "mesh-behaviour",
+  "version": "1.0.0",
+  "description": "A behavior used with BeamJS framework to setup a network mesh of nodes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "peerDependencies": {
+    "beamjs": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quaNode/mesh-behaviour.git"
+  },
+  "keywords": [
+    "mesh",
+    "node",
+    "nodes",
+    "network",
+    "nodejs",
+    "beamjs",
+    "behaviour",
+    "behavior"
+  ],
+  "author": "Ahmed Ragab <ahmed@quanode.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quaNode/mesh-behaviour/issues"
+  },
+  "homepage": "https://github.com/quaNode/mesh-behaviour#readme"
+}
