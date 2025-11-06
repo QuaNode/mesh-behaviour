@@ -105,15 +105,6 @@ module.exports = function (options) {
                 error.code = 400;
                 return;
             }
-            if (typeof parameters === 'object') {
-
-                if (parameters.ip != undefined) {
-
-                    error = new Error('ip parameter is reserved!');
-                    error.code = 400;
-                    return;
-                }
-            }
             if (retry != undefined && typeof retry !== 'boolean') {
 
                 error = new Error('Invalid retry flag');
@@ -129,8 +120,7 @@ module.exports = function (options) {
 
                             parameters = {};
                         }
-                        parameters.ip = ip;
-                        self.triggerLater(event, parameters, retry);
+                        self.triggerThis(event, parameters, retry);
                         response.triggered = true;
                     }).apply();
                 }
