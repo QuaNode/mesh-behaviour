@@ -10,6 +10,7 @@ module.exports = function (options) {
         throw new Error('Invalid options');
     }
     var {
+        name,
         nodes,
         version,
         path,
@@ -30,10 +31,11 @@ module.exports = function (options) {
     });
     return behaviour({
 
-        name: 'trigger',
+        name: name || 'trigger',
         version: version || '1',
         path: path || '/trigger',
         method: 'POST',
+        direct: true,
         queue: queue || function (_, parameters) {
 
             return parameters.event;
@@ -92,9 +94,7 @@ module.exports = function (options) {
             ]);
             if (!nodes.some(function (node) {
 
-                return ip == node.replace(...[
-                    'localhost', '127.0.0.1'
-                ]).split(':').pop();
+                return ip == node;
             })) {
 
                 error = new Error('Unauthorized node');
@@ -103,9 +103,12 @@ module.exports = function (options) {
             }
             if (typeof event !== 'string' || event.length === 0) {
 
-                error = new Error('Invalid event');
-                error.code = 400;
-                return;
+                if (typeof event !== 'object') {
+
+                    error = new Error('Invalid event');
+                    error.code = 400;
+                    return;
+                }
             }
             if (retry != undefined && typeof retry !== 'boolean') {
 
